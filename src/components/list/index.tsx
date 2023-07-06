@@ -9,9 +9,9 @@ type Props = {
 export function List({ hour, title, isHealthy }: Props) {
   return (
     <Container>
-      <Hour>{hour} |</Hour>
+      <Hour>{hour}</Hour>
       <Title>{title}</Title>
-      <Healthy>{isHealthy}</Healthy>
+      <Healthy type={isHealthy} />
     </Container>
   )
 }

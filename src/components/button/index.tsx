@@ -1,11 +1,19 @@
-import { Container, NewButton, Subtitle, Title } from "./styles";
+import { TouchableOpacityProps } from "react-native";
+import { ButtonTypeStyleProps, Container, NewButton, Subtitle, Title } from "./styles";
 
-export function Button() {
+type Props = TouchableOpacityProps & {
+  title: string
+  type?: ButtonTypeStyleProps
+}
+
+export function Button({ title, type = 'NEW', ...rest }: Props) {
   return (
     <Container>
       <Subtitle>Refeições</Subtitle>
-      <NewButton>
-        <Title>Nova refeição</Title>
+      <NewButton type={type}
+        {...rest}
+      >
+        <Title>{title}</Title>
       </NewButton>
     </Container>
   )
