@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { SectionList, Text } from "react-native";
 import { Button } from "../../components/button";
 import { Header } from "../../components/header";
@@ -5,7 +6,6 @@ import { List } from "../../components/list";
 import { Percent } from "../../components/percent";
 import { Container } from "./styles";
 
-import { useNavigation } from "@react-navigation/native";
 
 export function Home() {
   const DATA = [
@@ -20,16 +20,30 @@ export function Home() {
     },
   ];
 
+  const details = {
+    title: "90,86%",
+    subtitle: "das refeições dentro da dieta",
+    healthy: true
+  }
+
   const navigation = useNavigation()
 
   function handleNewFood() {
-    navigation.navigate('home')
+    navigation.navigate('new')
+  }
+
+  function handleDetails() {
+    navigation.navigate('details', {
+      title: details.title,
+      subtitle: details.subtitle,
+      healthy: details.healthy
+    })
   }
 
   return (
     <Container>
       <Header />
-      <Percent title="90,86%" subtitle="das refeições dentro da dieta" />
+      <Percent title="90,86%" subtitle="das refeições dentro da dieta" onPress={handleDetails} />
 
       <Button title="Nova Refeição" onPress={handleNewFood} />
 

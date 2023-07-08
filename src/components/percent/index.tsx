@@ -1,13 +1,14 @@
+import { TouchableOpacityProps } from "react-native";
 import { Container, Subtitle, Title } from "./styles";
 
-type Props = {
+type Props = TouchableOpacityProps & {
   title: string
   subtitle: string
 }
 
-export function Percent({ title, subtitle }: Props) {
+export function Percent({ title, subtitle, ...rest }: Props) {
   return (
-    <Container>
+    <Container  {...rest}>
       <Title>
         {title}
       </Title>

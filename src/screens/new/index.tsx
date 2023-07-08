@@ -1,3 +1,9 @@
+import { Container } from "./styles";
+
 export function New() {
-  return null;
+  return (
+    <Container>
+
+    </Container>
+  );
 }

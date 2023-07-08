@@ -4,7 +4,9 @@ export declare global {
       home: undefined;
       new: undefined;
       details: {
-        data: string;
+        title: string
+        subtitle: string
+        healthy: boolean
       }
     }
   }
