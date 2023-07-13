@@ -15,7 +15,8 @@ export function Home() {
         { hour: "20:00", title: 'Burger', isHealthy: false },
         { hour: "20:00", title: 'Cheese', isHealthy: false },
         { hour: "20:00", title: 'x-TUDO com salada e queijo', isHealthy: false },
-        { hour: "20:00", title: 'Salada', isHealthy: true }
+        { hour: "20:00", title: 'Salada', isHealthy: true },
+        { hour: "20:00", title: 'Salada cesar com frango grelhado', isHealthy: true }
       ]
     },
   ];

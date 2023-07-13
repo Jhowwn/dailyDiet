@@ -10,7 +10,7 @@ export function List({ hour, title, isHealthy }: Props) {
   return (
     <Container>
       <Hour>{hour}</Hour>
-      <Title>{title}</Title>
+      <Title>{title.length > 23 ? title.slice(0, 23).concat('...') : title}</Title>
       <Healthy type={isHealthy} />
     </Container>
   )

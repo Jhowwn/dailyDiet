@@ -10,10 +10,8 @@ export const Container = styled.View`
   width: 100%;
 
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 
-  padding: 24px;
+  padding: 16px;
   margin-bottom: 12px;
 
   background-color: ${({ theme }) => theme.COLORS.WHITE};
@@ -23,21 +21,29 @@ export const Container = styled.View`
 `
 
 export const Hour = styled.Text`
+  padding: 0 6px 0 0;
+  border-width: 0 1px 0 0;
+  border-color: ${({ theme }) => theme.COLORS.GRAY_4};
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   color: ${({ theme }) => theme.COLORS.GRAY_1};
 `
 
 export const Title = styled.Text`
+  flex: 1;
+  margin-left: 12px;
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   color: ${({ theme }) => theme.COLORS.GRAY_3};
 `
 
 export const Healthy = styled.View<Props>`
-  width: 10px;
-  padding: 10px;
+  width: 20px;
+  padding: 12px;
+  margin-left: 12px;
 
+  justify-content: flex-end;
+  align-items: flex-end;
   background-color: ${({ theme, type }) => type ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID};
-  border-radius: 32px;
+  border-radius: 44px;
 `
