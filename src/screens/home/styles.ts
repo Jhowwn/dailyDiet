@@ -15,3 +15,17 @@ export const Day = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_1};
   margin: 12px 0;
 `
+
+export const ButtonContainer = styled.View`
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-bottom: 24px;
+`
+
+export const Subtitle = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  color: ${({ theme }) => theme.COLORS.GRAY_3};
+`
