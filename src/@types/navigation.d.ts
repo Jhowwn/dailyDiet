@@ -3,10 +3,14 @@ export declare global {
     interface RootParamList {
       home: undefined;
       new: undefined;
+      feedback: boolean;
       details: {
-        title: string
-        subtitle: string
-        healthy: boolean
+        percent: number
+        registerMeals: number
+        sequency: number
+        isHealthy: boolean
+        healthy: number
+        notHealthy: number
       }
     }
   }

@@ -3,12 +3,13 @@ import { FOOD_COLLECTION } from "@storage/storageConfig";
 import { FoodStorageDTO } from "./FoodStorage.DTO";
 import { foodGetAll } from "./foodsGetAll";
 
-export async function newFood({ title, description, date, hour, isHealthy }: FoodStorageDTO) {
+export async function newFood({ id, date, title, description, hour, isHealthy }: FoodStorageDTO) {
   try {
     const storageFoods = await foodGetAll();
 
-    const storage = JSON.stringify([...storageFoods, { title, description, date, hour, isHealthy }])
-    await AsyncStorage.setItem(`${FOOD_COLLECTION}-${date}`, storage);
+    const storage = JSON.stringify([...storageFoods, { id, date, title, description, hour, isHealthy }])
+
+    await AsyncStorage.setItem(`${FOOD_COLLECTION}`, storage);
   } catch (error) {
     throw error;
   }

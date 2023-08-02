@@ -9,11 +9,11 @@ export const Container = styled(SafeAreaView)`
 
 export const Day = styled.Text`
   flex: 1;
-  margin-left: 12px;
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  margin-top: 14px;
+  margin-bottom: 12px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   color: ${({ theme }) => theme.COLORS.GRAY_1};
-  margin: 12px 0;
 `
 
 export const ButtonContainer = styled.View`

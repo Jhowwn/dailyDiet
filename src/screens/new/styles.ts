@@ -55,7 +55,7 @@ export const NameText = styled(TextInput)`
 
 export const DescriptionText = styled(TextInput)`
   color: ${({ theme }) => theme.COLORS.GRAY_1};
-  padding: 0 16px;
+  padding: 16px;
   border-width: 1px;
   border-color: ${({ theme }) => theme.COLORS.GRAY_4};
   border-radius: 8px;

@@ -12,7 +12,7 @@ export const Container = styled(SafeAreaView) <Props>`
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme, healthy }) => healthy ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID};
+  background-color: ${({ theme, healthy }) => healthy ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 
 export const HeaderTitle = styled.Text`
