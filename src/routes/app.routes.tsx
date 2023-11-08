@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { DetailsFood } from "@screens/detailFood";
 import { Details } from "@screens/details";
 import { Feedback } from "@screens/feedback";
 import { Home } from "@screens/home";
@@ -10,10 +11,6 @@ export function AppRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen
-        name='feedback'
-        component={Feedback}
-      />
-      <Screen
         name='home'
         component={Home}
       />
@@ -22,13 +19,17 @@ export function AppRoutes() {
         component={Details}
       />
       <Screen
+        name='detailsFood'
+        component={DetailsFood}
+      />
+      <Screen
         name='new'
         component={New}
       />
-      {/* <Screen
+      <Screen
         name='feedback'
         component={Feedback}
-      /> */}
+      />
     </Navigator>
   )
 }

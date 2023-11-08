@@ -3,17 +3,16 @@ import { Checked } from "@components/checked";
 import { useNavigation } from "@react-navigation/native";
 import { newFood } from "@storage/food/newFood";
 import { useState } from 'react';
-import { TextInput } from "react-native";
 import { useTheme } from "styled-components/native";
 import { Container, DataDetails, DescriptionText, DetailsContainer, HeaderTitle, MainContainer, NameText, TimeInput, Title } from "./styles";
 
 
-export function New({ ...rest }: TextInput) {
+export function New() {
   const navigation = useNavigation()
 
   function handleFeedback() {
     if (isHealthy !== null) {
-      navigation.navigate('feedback', isHealthy)
+      navigation.navigate('feedback', {isHealthy: isHealthy})
     }
   }
 
@@ -74,13 +73,14 @@ export function New({ ...rest }: TextInput) {
 
       const id = Math.random().toString()
       await newFood({ id, title, description, date, hour, isHealthy });
+      handleFeedback()
+
       setIsHealthy(null)
       setHour('')
       setDate('')
       setDescription('')
       setTitle('')
 
-      handleFeedback()
     } catch (error) {
       console.log(error)
     }
@@ -97,7 +97,6 @@ export function New({ ...rest }: TextInput) {
           placeholder="Nome"
           onChangeText={setTitle}
           value={title}
-          {...rest}
         />
 
         <Title>Descrição</Title>
@@ -109,7 +108,6 @@ export function New({ ...rest }: TextInput) {
           textAlignVertical="top"
           onChangeText={setDescription}
           value={description}
-          {...rest}
         />
 
         <MainContainer>

@@ -5,11 +5,13 @@ export type ButtonTypeStyleProps = "NEW" | "SAVE"
 
 type Props = {
   type: ButtonTypeStyleProps
+  w: string
+  h: string
 }
 
 export const NewButton = styled(TouchableOpacity) <Props>`
-  width: 100%;
-  height: 50px;
+  width: ${({ w }) => w === '100%' ? '100%' : '250px'};
+  height: ${({ h }) => h}px;
   justify-content: center;
   align-items: center;
   

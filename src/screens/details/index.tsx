@@ -15,6 +15,8 @@ export function Details() {
   const route = useRoute()
   const { percent, registerMeals, sequency, healthy, notHealthy, isHealthy } = route.params as RouteParams
 
+  console.log(isHealthy)
+
   const navigation = useNavigation()
 
   function handleGoBack() {

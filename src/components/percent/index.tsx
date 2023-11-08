@@ -4,11 +4,12 @@ import { Container, Subtitle, Title } from "./styles";
 type Props = TouchableOpacityProps & {
   title: string
   subtitle: string
+  isHealthy: boolean
 }
 
-export function Percent({ title, subtitle, ...rest }: Props) {
+export function Percent({ title, subtitle, isHealthy, ...rest }: Props) {
   return (
-    <Container  {...rest}>
+    <Container isHealthy={isHealthy}  {...rest}>
       <Title>
         {title}
       </Title>

@@ -10,7 +10,6 @@ export const Container = styled(SafeAreaView)`
 export const Day = styled.Text`
   flex: 1;
   margin-top: 14px;
-  margin-bottom: 12px;
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   color: ${({ theme }) => theme.COLORS.GRAY_1};

@@ -2,16 +2,16 @@ import { List } from "@components/list";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { FoodStorageDTO } from "@storage/food/FoodStorage.DTO";
 import { foodGetAll } from "@storage/food/foodsGetAll";
-import { useCallback, useState } from "react";
-import { SectionList } from "react-native";
+import { useCallback, useEffect, useState } from "react";
+import { SectionList, TouchableOpacity } from "react-native";
 import { Button } from "../../components/button";
 import { Header } from "../../components/header";
 import { Percent } from "../../components/percent";
 import { ButtonContainer, Container, Day, Subtitle } from "./styles";
 
-
 export function Home() {
   const [foods, setFoods] = useState<FoodStorageDTO[]>([])
+  const [isHealthy, setIsHealthy] = useState(true)
 
   const navigation = useNavigation()
 
@@ -34,24 +34,35 @@ export function Home() {
   const registerMeals = foods.length
   const percent = Number(((healthy / foods.length) * 100))
 
+  useEffect(() => {
+    if (percent < 50) {
+      setIsHealthy(false)
+    } else {
+      setIsHealthy(true)
+    }
+  }, [percent])
+
   //Send the infos for the datails
   function handleDetails() {
     navigation.navigate('details', {
       percent: percent,
       registerMeals: registerMeals,
       sequency: sequency,
-      isHealthy: percent > 50 ? true : false,
+      isHealthy: percent >= 50 ? true : false,
       healthy: healthy,
       notHealthy: notHealthy
     })
   }
 
+  function handleDetailsFood(item: FoodStorageDTO) {
+    navigation.navigate('detailsFood', item)
+  }
 
   //Get all register of foods
   async function fetchFood() {
     try {
-      const data = await foodGetAll();
-      setFoods(data);
+      const foodsResults: FoodStorageDTO[] = await foodGetAll();
+      setFoods(foodsResults);
     } catch (error) {
       console.log(error)
     }
@@ -96,6 +107,7 @@ export function Home() {
     <Container>
       <Header />
       <Percent
+        isHealthy={isHealthy}
         title={`${!percent ? 0 : percent.toFixed(2).replace('.', ',')} %`}
         subtitle="das refeições dentro da dieta" onPress={handleDetails}
       />
@@ -109,7 +121,9 @@ export function Home() {
         sections={datas}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <List key={item.title} hour={item.hour} title={item.title} isHealthy={item.isHealthy}></List>
+          <TouchableOpacity key={item.id} onPress={handleDetailsFood(item)}>
+            <List hour={item.hour} title={item.title} isHealthy={item.isHealthy}></List>
+          </TouchableOpacity>
         )}
         renderSectionHeader={({ section: { day } }) => (
           <Day>{day}</Day>

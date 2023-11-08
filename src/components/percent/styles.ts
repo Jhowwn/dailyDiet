@@ -1,7 +1,11 @@
 import { TouchableOpacity } from "react-native"
 import styled from "styled-components/native"
 
-export const Container = styled(TouchableOpacity)`
+type Props = {
+  isHealthy: boolean
+}
+
+export const Container = styled(TouchableOpacity)<Props>`
   width: 100%;
   height: 102px;
   
@@ -11,7 +15,7 @@ export const Container = styled(TouchableOpacity)`
   padding: 24px;
   margin-bottom: 12px;
 
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, isHealthy }) => isHealthy ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
   border-radius: 8px;
   `
 
