@@ -1,13 +1,24 @@
 import { Button } from "@components/button";
 import { Checked } from "@components/checked";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { FoodStorageDTO } from "@storage/food/FoodStorage.DTO";
 import { newFood } from "@storage/food/newFood";
+import { updateFood } from "@storage/food/updateFood";
 import { useState } from 'react';
 import { useTheme } from "styled-components/native";
 import { Container, DataDetails, DescriptionText, DetailsContainer, HeaderTitle, MainContainer, NameText, TimeInput, Title } from "./styles";
 
 
 export function New() {
+  const route = useRoute()
+  const food = (route.params as FoodStorageDTO) || {}
+
+  const [title, setTitle] = useState(food.title || '')
+  const [description, setDescription] = useState(food.description || '')
+  const [date, setDate] = useState(food.date || '')
+  const [hour, setHour] = useState(food.hour || '')
+  const [isHealthy, setIsHealthy] = useState<boolean | null>(food.isHealthy)
+  
   const navigation = useNavigation()
 
   function handleFeedback() {
@@ -17,12 +28,6 @@ export function New() {
   }
 
   const { COLORS } = useTheme()
-
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [date, setDate] = useState('')
-  const [hour, setHour] = useState('')
-  const [isHealthy, setIsHealthy] = useState<boolean | null>(null)
 
   const handleNewDate = (date: string) => {
     let newDate = '';
@@ -66,15 +71,20 @@ export function New() {
   }
 
   async function handleNewFood() {
+    if (isHealthy === null) {
+      return console.log('Não pode deixar vazio ')
+    }
+    
     try {
-      if (isHealthy === null) {
-        return console.log('Não pode deixar vazio ')
+      const id = food.id || Math.random().toString()
+
+      if (food) {
+        await updateFood({ id, title, description, date, hour, isHealthy })
+      } else {
+        await newFood({ id, title, description, date, hour, isHealthy });
       }
 
-      const id = Math.random().toString()
-      await newFood({ id, title, description, date, hour, isHealthy });
       handleFeedback()
-
       setIsHealthy(null)
       setHour('')
       setDate('')
@@ -154,7 +164,7 @@ export function New() {
           </DataDetails>
         </MainContainer>
 
-        <Button title="Cadastrar refeição" onPress={handleNewFood} />
+        <Button title={!food ? "Cadastrar refeição" : "Salvar Alteração"} onPress={handleNewFood} />
       </DetailsContainer>
     </Container >
   );

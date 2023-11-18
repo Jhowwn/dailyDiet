@@ -30,6 +30,12 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_1};
 `
 
+export const TitleH2 = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  color: ${({ theme }) => theme.COLORS.GRAY_1};
+`
+
 export const Subtitle = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
@@ -48,25 +54,23 @@ export const DetailsContainer = styled.View`
 `
 
 export const DataDetails = styled.View`
-  min-height: 56px;
-  max-width: 60%;
+  min-height: 34px;
+  max-width: 50%;
   align-items: center;
-  justify-content: center;
   flex-direction: row;
   background-color: ${({ theme }) => theme.COLORS.GRAY_6};
 
-  border-radius: 8px;
+  border-radius: 44px;
 
   margin-top: 12px;
   margin-bottom: 24px;
 `
 
 export const IsHealthy = styled.View<Props>`
-  width: 5px;
+  width: 10px;
   padding: 5px;
-  margin-right: 15px;
-  justify-content: flex-end;
-  align-items: flex-end;
+  margin-right: 10px;
+  margin-left: 10px;
   border-radius: 44px;
 
   background-color: ${({ theme, healthy }) => healthy ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};

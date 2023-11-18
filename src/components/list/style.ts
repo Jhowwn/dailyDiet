@@ -1,4 +1,3 @@
-import { TouchableOpacity } from "react-native"
 import styled from "styled-components/native"
 
 export type HealthyTypeStyleProps = true | false
@@ -7,7 +6,7 @@ type Props = {
   type: HealthyTypeStyleProps
 }
 
-export const Container = styled(TouchableOpacity)`
+export const Container = styled.View`
   width: 100%;
 
   flex-direction: row;

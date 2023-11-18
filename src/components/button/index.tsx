@@ -16,7 +16,7 @@ export function Button({ title, type = 'NEW', width = '100%', height = '50', ...
       h={height}
       {...rest}
     >
-      <Title>{title}</Title>
+      <Title type={type}>{title}</Title>
     </NewButton>
   )
 }

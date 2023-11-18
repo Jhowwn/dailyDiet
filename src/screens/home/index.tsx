@@ -121,7 +121,7 @@ export function Home() {
         sections={datas}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <TouchableOpacity key={item.id} onPress={handleDetailsFood(item)}>
+          <TouchableOpacity key={item.id} onPress={() => handleDetailsFood(item)}>
             <List hour={item.hour} title={item.title} isHealthy={item.isHealthy}></List>
           </TouchableOpacity>
         )}

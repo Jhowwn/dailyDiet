@@ -1,7 +1,6 @@
-import { TouchableOpacityProps } from "react-native";
 import { Container, Healthy, Hour, Title } from "./style";
 
-type Props = TouchableOpacityProps & {
+type Props = {
   hour: string
   title: string
   isHealthy: boolean
